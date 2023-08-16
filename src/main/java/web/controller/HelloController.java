@@ -1,6 +1,7 @@
 package web.controller;
 
-import Service.dao.CarDao;
+import Service.CarService;
+import Service.CarServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @Controller
 public class HelloController {
+
+    CarService carService = new CarServiceImpl();
 
     @GetMapping(value = "/")
     public String printWelcome(ModelMap model) {
@@ -25,7 +28,7 @@ public class HelloController {
 
     @GetMapping("/cars")
     public String showCars(@RequestParam(value = "count", defaultValue = "5") int numberOfCars, Model model) {
-        model.addAttribute("cars", CarDao.certainNumberOfCars(numberOfCars));
+        model.addAttribute("cars", carService.getListOfCars(numberOfCars));
         return "cars";
     }
 
