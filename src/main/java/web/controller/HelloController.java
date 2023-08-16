@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-    CarService carService = new CarServiceImpl();
+   private final CarService carService = new CarServiceImpl();
 
     @GetMapping(value = "/")
     public String printWelcome(ModelMap model) {
