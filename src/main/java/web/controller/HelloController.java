@@ -1,7 +1,9 @@
 package web.controller;
 
-import Service.CarService;
-import Service.CarServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import service.CarService;
+import service.CarServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,7 +16,8 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-   private final CarService carService = new CarServiceImpl();
+    @Autowired
+    CarService carService;
 
     @GetMapping(value = "/")
     public String printWelcome(ModelMap model) {

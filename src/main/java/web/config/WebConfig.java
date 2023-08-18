@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import service.CarService;
+import service.CarServiceImpl;
 
 @Configuration
 @EnableWebMvc
@@ -22,6 +24,11 @@ public class WebConfig implements WebMvcConfigurer {
         this.applicationContext = applicationContext;
     }
 
+
+    @Bean
+    public CarService carService() {
+        return new CarServiceImpl();
+    }
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
